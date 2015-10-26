@@ -68,7 +68,7 @@ class HTPickerURLHandler(URLHandler):
             logging.warn(" ".join(command))
 
         #os.system(command + ' &')
-        subprocess.Popen(command, stdin=None, stout=None, stderr=None, close_fds=True)
+        subprocess.Popen(command, stdin=None, stdout=None, stderr=None, close_fds=True)
         #os.waitpid(proc.pid, 0)
 
         # the above "should" work but results in a mysterious situation
