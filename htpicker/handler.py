@@ -61,10 +61,14 @@ class HTPickerURLHandler(URLHandler):
         if not command:
             logging.warn("No command is set for this file: " + fullpath)
             return
+        else:
+            logging.warn("command:")
+            logging.warn(command)
+            logging.warn(" ".join(command))
 
-        os.system(command + ' &')
-
-        #subprocess.Popen(command, shell=True)
+        #os.system(command + ' &')
+	DETACHED_PROCESS = 0x00000008
+        subprocess.Popen(command, creationflags=DETACHED_PROCESS)
         #os.waitpid(proc.pid, 0)
 
         # the above "should" work but results in a mysterious situation

@@ -6,6 +6,7 @@ import logging
 import os
 import pipes
 import re
+import shlex
 
 class MyConfigParser(ConfigParser.RawConfigParser):
     def get_default(self, section, option, default):
@@ -69,7 +70,12 @@ class HTPickerConfig(object):
         section = self._section_for_file(file_path)
         if not section:
             return ''
-        return self.cfg.get_default(section, 'command', '').format(file=pipes.quote(file_path))
+        command = self.cfg.get_default(section, 'command', '')
+        command = shlex.split()
+        for i, part in enumerate(command):
+            if '{file}' in part:
+                command[i] = part.format(file=file_path)
+        return command
 
     def get_icon(self, file_path):
         section = self._section_for_file(file_path)
