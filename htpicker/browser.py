@@ -121,7 +121,7 @@ class URLHandler(object):
         # i don't use urlparse.urlsplit() because it doesn't parse the
         # netloc/path of non-http:// URLs in the usual way.
         uri = request.get_uri()
-
+        logging.warning(uri)
         if not uri.startswith(self.scheme+'://'):
             return
 
