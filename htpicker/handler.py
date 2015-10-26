@@ -67,7 +67,7 @@ class HTPickerURLHandler(URLHandler):
             logging.warn(" ".join(command))
 
         #os.system(command + ' &')
-	DETACHED_PROCESS = 0x00000008
+        DETACHED_PROCESS = 0x00000008
         subprocess.Popen(command, creationflags=DETACHED_PROCESS)
         #os.waitpid(proc.pid, 0)
 
@@ -111,6 +111,7 @@ class HTPickerURLHandler(URLHandler):
 
         listing = [ f for f in os.listdir(directory) if not ignore_match(f.lower()) ]
         listing = sorted(listing, key=str.lower)
+        import pdb; pdb.set_trace()
 
         for filename in listing:
             file_info = self._get_file_info(directory, filename)
