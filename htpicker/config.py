@@ -71,7 +71,7 @@ class HTPickerConfig(object):
         if not section:
             return ''
         command = self.cfg.get_default(section, 'command', '')
-        command = shlex.split()
+        command = shlex.split(command)
         for i, part in enumerate(command):
             if '{file}' in part:
                 command[i] = part.format(file=file_path)
