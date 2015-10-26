@@ -54,7 +54,7 @@ var activate = function(fullpath, type, display_name)
     else
     {
         $('#main-menu').hide();
-        $.get('htpicker://play_file?fullpath=' + fullpath);
+        $.get('htpicker://play_file?fullpath=' + encodeURIComponent(fullpath));
         setTimeout(function() { $('#main-menu').show(); }, 5000);
     }
 }
