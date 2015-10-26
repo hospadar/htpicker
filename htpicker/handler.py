@@ -9,6 +9,7 @@ import pkg_resources
 import stat
 import types
 import urllib
+import subprocess
 
 from htpicker.browser import URLHandler, URLAction
 
